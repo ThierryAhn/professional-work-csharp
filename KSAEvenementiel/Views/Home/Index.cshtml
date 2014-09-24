@@ -1,0 +1,98 @@
+﻿@{
+    ViewBag.Title = "Page d'accueil";
+}
+
+
+
+<div id="maincontainer">
+    <!-- slider -->
+    <div id="slider">
+	    <div id="content">
+		    <div class="border_box">
+			    <div class="box_skitter box_skitter_large">
+				    <ul>
+					    <li>
+                            <a href="#001">
+                                <img src="@Url.Content("~/Content/images/slideshow/001.jpg")" class="001" />
+                            </a>
+                            <div class="label_text">
+                                @*<p>001</p>*@
+                            </div>
+					    </li>
+
+                        <li>
+                            <a href="#001">
+                                <img src="@Url.Content("~/Content/images/slideshow/001 - backline.jpg")" class="001" />
+                            </a>
+                            <div class="label_text">
+                                @*<p>001</p>*@
+                            </div>
+					    </li>
+				    </ul>
+			    </div>
+		    </div>
+	    </div>
+    </div>
+
+    <div id="main-content">
+        <div id="news-video">
+            <!-- news -->
+            <section id='news'>
+		        <h3> NOUVELLES </h3>
+                <p>
+			        News
+		        </p>	
+	        </section>
+
+            <!-- pub video -->
+            <section id='pub_video'>
+		        <h3> VIDEO </h3>
+                <p>
+                    <iframe src="http://www.youtube.com/embed/8qGtroXBq4E" frameborder="0" allowfullscreen></iframe>
+		        </p>
+		    </section>
+            
+        </div>
+
+        <!-- pub image -->
+        <section id='pub_image'>
+            <h3> EVÈNEMENT À VENIR </h3>
+		    <p>
+			    <img src="@Url.Content("~/Content/images/pub/photo.jpg")" alt="evenement à venir"/>
+		    </p>		
+	    </section>
+        <!-- facebook -->
+        <section id='facebook'>
+            <h3> FACEBOOK </h3>
+		    <p class="fb-comments" data-href="http://www.ksa.com" data-width="325" data-num-posts="5"> 
+		    </p>
+	    </section>
+
+        <!-- partners -->
+        <section id='partners'>
+            <h3> PARTENAIRES </h3>
+		    <p>
+			    Partenaires
+		    </p>
+	    </section>
+
+        <!-- technical-informations -->	
+	    <section id='technical-informations'>
+            <h3> INFOS TECHINIQUES </h3>
+		    <p>
+			    Infos
+		    </p>
+	    </section>
+    </div>
+</div>
+
+<!-- facebook -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1";
+		fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+</script>
