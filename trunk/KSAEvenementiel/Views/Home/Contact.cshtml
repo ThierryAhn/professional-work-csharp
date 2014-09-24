@@ -1,0 +1,116 @@
+﻿@using KSAEvenementiel.Models
+
+@model EditableContact
+
+@{
+    ViewBag.Title = "Contact";
+}
+
+<div id="maincontainer">
+	<!-- Contact -->
+	<div>
+
+        <h2>
+			<img src="@Url.Content("~/Content/images/see-logo.png")" alt="see-logo" />
+			<span> CONTACT </span>
+		</h2>
+
+		<div id="main-content">
+            @using (Html.BeginForm("Contact", "Home", FormMethod.Post, new { @class = "contact_form" }))
+            {
+                <ul>
+				    <li>
+					    <h3>Pour nous contacter par mail !</h3>
+					    <span class="required_notification">* Champs requis</span>
+				    </li>
+							
+				    <li>
+					    @Html.LabelFor(m => Model.Name)
+                        @Html.TextBoxFor(m => Model.Name, new {placeholder="Votre nom et prenom", required = "required "})
+				    </li>
+								
+				    <li>
+					    @Html.LabelFor(m => Model.Email)
+                        @Html.TextBoxFor(m => Model.Email, new {type="email", placeholder="Votre Email", required = "required "})
+					    <span class="form_hint">Bon Format : nom@exemple.com</span>
+				    </li>
+								
+				    <li>
+					    @Html.LabelFor(m => Model.ObjecT)
+                        @Html.TextBoxFor(m => Model.ObjecT, new {placeholder="Objet du message", required = "required "})
+				    </li>
+								
+				    <li>
+					    @Html.LabelFor(m => Model.Message)
+                        @Html.TextAreaFor(m => Model.Message, new {rows="5", cols="45", required="required" })
+				    </li>
+                    			
+				    <li>
+					    <button class="submit" type="submit">Envoyer</button>
+				    </li>
+			    </ul>
+            }
+            
+
+            <div id="map-canvas"></div>
+
+            <div class="widget_container">
+                <div class="top_container">
+	                <p class="widget_handler">Pour nous appeler !</p>
+                </div>
+                
+                <div class="contact_list">
+			        <ul >
+				        <li>Portable : +33 6 51 23 36 14</li>
+				        <li>Portable : +33 6 95 01 01 01</li>
+				        <li>Téléphone fixe : +229 96 01 01 01</li>
+				        <li>Mail : info@ksaevenementiel.fr</li>
+			        </ul>
+		        </div>
+            </div>
+        </div>
+    
+    </div>
+	<!-- /Contact -->
+	
+</div>
+
+<script>
+    $(".top_container").on("click", function () {
+
+        if ($(".contact_list").css('display') == 'none') {
+            $(".contact_list").css({
+                "display": "block"
+            });
+        } else {
+            $(".contact_list").css({
+                "display": "none"
+            });
+        }
+    });
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&language=fr"></script>
+<script>
+    function initialize() {
+        var myLatLng = new google.maps.LatLng(48.8566140, 2.3522219);
+
+        var mapOptions = {
+            zoom: 8,
+            center: myLatLng
+        };
+        var map = new google.maps.Map(document.getElementById('map-canvas'),
+            mapOptions);
+
+        /* marker */
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'KSA Evenementiel',
+            zIndex: 3
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>
